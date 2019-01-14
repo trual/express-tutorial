@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/trual/express-tutorial/issues"
   },
-  "homepage": "https://github.com/trual/express-tutorial#readme"
+  "homepage": "https://github.com/trual/express-tutorial#readme",
+  "dependencies": {
+    "express-handlebars": "^3.0.0"
+  }
 }
