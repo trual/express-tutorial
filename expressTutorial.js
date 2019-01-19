@@ -30,12 +30,24 @@ app.get('/junk', function(req, res, next){
 });
 
 app.use(function(err, reqq, res, next){
-  console.log('Errpr : ' + err.message);
+  console.log('Error : ' + err.message);
   next();
 });
 
 app.get('/about', function(req, res, next){
   res.render('about');
+});
+
+app.use(function(req, res){
+  res.type('text/html');
+  res.status(404);
+  res.render('404');
+});
+
+app.use(function(err, req, res, next){
+  console.error(err.stack);
+  res.status(500);
+  res.render('500');
 });
 
 
