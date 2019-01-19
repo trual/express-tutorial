@@ -11,7 +11,7 @@ app.set('view engine', 'handlebars');
 
 // more imports here
 
-app.use(require(body-parser').urlencoded({
+app.use(require('body-parser').urlencoded({
   extended: true}));
 
 var formidable = require('formidable');
