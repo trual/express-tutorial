@@ -17,7 +17,7 @@ app.use(require('body-parser').urlencoded({
 var formidable = require('formidable');
 
 var credentials = require('./credentials.js');
-app.user(require('cookie-parser')(credentials.cookieSecret));
+app.use(require('cookie-parser')(credentials.cookieSecret));
 
 app.set('port', process.env.PORT || 3000);
 
