@@ -11,6 +11,14 @@ app.set('view engine', 'handlebars');
 
 // more imports here
 
+app.use(require(body-parser').urlencoded({
+  extended: true}));
+
+var formidable = require('formidable');
+
+var crendentials = require('./credentials.js');
+app.user(require('cookie-parser')(credentials.cookieSecret));
+
 app.set('port', process.env.PORT || 3000);
 
 app.use(express.static(__dirname + '/public'));
@@ -50,10 +58,21 @@ app.use(function(err, req, res, next){
   res.render('500');
 });
 
+app.get('/contact', function(req, res){
+  res.render('contact', {csrf: 'CSRF token here'});
+});
 
+app.get('/thankyou', function(req, res){
+  res.render('thankyou');
+});
 
-
-
+app.post('/process', function(req, res){
+  console.log('Form' + req.query.form);
+  console.log('CSRF token : ' + req.body._csrf );
+  console.log('Email : ' + req.body.email);
+  console.log('Question : ' + req.body.ques);
+  res.redirect(303, '/thankyou');
+});
 
 
 
