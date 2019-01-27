@@ -132,7 +132,7 @@ app.get('/readfile', function(req, res, next){
   });
 });
 
-app.get('/writefile', function(req, res next){
+app.get('/writefile', function(req, res, next){
   fs.writefile('./public/randomfile.txt', 'More random text', function(err){
     if (err){
       return console.error(err);
