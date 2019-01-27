@@ -118,7 +118,26 @@ app.use(function(req, res, next){
 });
 
 app.get('/viewcount', function(req, res, next){
-  res.send('You viewed this page' + req.session.views['/viewcount'] + ' times');
+  res.send('You viewed this page ' + req.session.views['/viewcount'] + ' times');
+});
+
+var fs = require("fs");
+
+app.get('/readfile', function(req, res, next){
+  fs.readFile('./public/randomfile.txt', function(err, data){
+    if (err){
+      return console.error(err);
+    }
+    res.send("the file : " + data.toString());
+  });
+});
+
+app.get('/writefile', function(req, res next){
+  fs.writefile('./public/randomfile.txt', 'More random text', function(err){
+    if (err){
+      return console.error(err);
+    }
+  });
 });
 
 app.use(function(req, res){
